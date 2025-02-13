@@ -11,7 +11,7 @@ Welcome to the Group 3 Repository! This is the central hub for all project-relat
 ## Features We Are Building
 
 
-## Meet Our Team
+## Our Team
 
 
 ## Team Roles and Responsibilities
