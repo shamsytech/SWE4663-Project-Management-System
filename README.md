@@ -18,7 +18,7 @@ Welcome to the Group 3 Repository! This is the central hub for all project-relat
 
 
 ## Project Plan and Timeline
-
+[Quick Plan]()
 
 ## Prototype Overview
 
