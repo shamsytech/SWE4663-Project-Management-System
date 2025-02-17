@@ -12,7 +12,7 @@ Welcome to the Group 3 Repository! This is the central hub for all project-relat
 
 
 ## Our Team
-
+[Team Assigments](https://github.com/shamoosa1/SWE4663-ProjectManagementSystem/blob/2681d33f70ea7e11e761b627df1d623389095135/TEAM_ROLES.md)
 
 ## Team Roles and Responsibilities
 
