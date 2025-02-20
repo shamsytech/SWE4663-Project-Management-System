@@ -7,35 +7,39 @@ This document outlines the roles and responsibilities of each team member for th
 ## Roles and Responsibilities
 
 ### Project Managers
-- **Name**: Shams Hasan
+- **Project Lead**: Shams Hasan
+- **Co-Project Lead**:
 - **Responsibilities**:
   - Oversee project timeline and deliverables.
   - Coordinate team communication and meetings.
   - Ensure tasks are assigned and completed on time.
 
 ### Developers
-- **Name**: [Name]
+- **Main Software Developer**: [Name]
+- **Co-Software Developer**:
 - **Responsibilities**:
   - Implement core system features (e.g., General Information, Requirements, Effort Tracking).
   - Write clean, maintainable code.
   - Collaborate with designers and testers.
 
 ### Designers
-- **Name**: [Name]
+- **Main Designer**: [Name]
+- **Co-Designer**:
 - **Responsibilities**:
   - Design the user interface (UI) for the system.
   - Ensure the system is user-friendly and visually appealing.
   - Create wireframes or mockups for approval.
 
 ### Testers
-- **Name**: [Name]
+- **Main Tester**: [Name]
+- **Co-Tester**:
 - **Responsibilities**:
   - Test the system for bugs and errors.
   - Ensure all features meet functional and non-functional requirements.
   - Document and report issues to developers.
 
-### Risk Analyzers
-- **Name**: [Name]
+### Risk Analyzer(s)
+- **[Names go here]**
 - **Responsibilities**:
   - Write and maintain project documentation (e.g., reports, user manuals).
   - Ensure all documentation is clear, concise, and up-to-date.
