@@ -15,7 +15,7 @@ This document outlines the roles and responsibilities of each team member for th
   - Ensure tasks are assigned and completed on time.
 
 ### Developers
-- **Main Software Developer**: [Name]
+- **Main Software Developer**: Harry Nguyen
 - **Co-Software Developer**:
 - **Responsibilities**:
   - Implement core system features (e.g., General Information, Requirements, Effort Tracking).
