@@ -23,7 +23,7 @@ This document outlines the roles and responsibilities of each team member for th
   - Collaborate with designers and testers.
 
 ### Designers
-- **Main Designer**: [Name]
+- **Main Designer**: Julissa Urbiola
 - **Co-Designer**:
 - **Responsibilities**:
   - Design the user interface (UI) for the system.
