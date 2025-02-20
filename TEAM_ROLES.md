@@ -31,7 +31,7 @@ This document outlines the roles and responsibilities of each team member for th
   - Create wireframes or mockups for approval.
 
 ### Testers
-- **Main Tester**: [Name]
+- **Main Tester**: Ashlynn Sutton
 - **Co-Tester**:
 - **Responsibilities**:
   - Test the system for bugs and errors.
