@@ -18,7 +18,7 @@ Welcome to the Group 3 Repository! This is the central hub for all project-relat
 
 
 ## Project Plan and Timeline
-[Quick Plan]()
+[Quick Plan](https://github.com/shams-hasan/SWE4663-ProjectManagementSystem/tree/e83ca0a9d51b1926d2b4169e396977dffec52f27/Quick-Plan)
 
 ## Prototype Overview
 
