@@ -20,7 +20,7 @@ Welcome to the Group 3 Repository! This is the central hub for all project-relat
 ## Project Plan and Timeline
 [Quick Plan](https://github.com/shams-hasan/SWE4663-ProjectManagementSystem/tree/e83ca0a9d51b1926d2b4169e396977dffec52f27/Quick-Plan)
 
-[Comprehensive Plan](https://github.com/shams-hasan/SWE4663-ProjectManagementSystem/blob/98db988dc551a411edf70fc5e9a136dee8e66f96/Comprehensive-Plan/Group3_Comprehensive_Plan.pdf)
+[Comprehensive Plan](https://github.com/shams-hasan/SWE4663-ProjectManagementSystem/tree/f31ab846c9ce5dc77d90b4a8b7ca53a67be90bdd/Planning-Docs/Comprehensive-Plan)
 
 ## Prototype Overview
 
