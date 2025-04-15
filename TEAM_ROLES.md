@@ -16,7 +16,7 @@ This document outlines the roles and responsibilities of each team member for th
 
 ### Developers
 - **Main Software Developer**: Harry Nguyen
-- **Co-Software Developer**:
+- **Co-Software Developer(s)**:
 - **Responsibilities**:
   - Implement core system features (e.g., General Information, Requirements, Effort Tracking).
   - Write clean, maintainable code.
@@ -24,7 +24,7 @@ This document outlines the roles and responsibilities of each team member for th
 
 ### Designers
 - **Main Designer**: Julissa Urbiola
-- **Co-Designer**:
+- **Co-Designer(s)**: Shams Hasan, Ashlynn Sutton
 - **Responsibilities**:
   - Design the user interface (UI) for the system.
   - Ensure the system is user-friendly and visually appealing.
@@ -32,7 +32,7 @@ This document outlines the roles and responsibilities of each team member for th
 
 ### Testers
 - **Main Tester**: Ashlynn Sutton
-- **Co-Tester**:
+- **Co-Tester(s)**:
 - **Responsibilities**:
   - Test the system for bugs and errors.
   - Ensure all features meet functional and non-functional requirements.
