@@ -35,7 +35,7 @@ public class SignupServlet extends HttpServlet {
         db.close();
 
         if (success) {
-            response.sendRedirect("pages/login_page.html"); // Update to your actual login page path
+            response.sendRedirect("pages/landing_page.html");
         } else {
             out.println("Signup failed. Email might already be registered.");
         }
