@@ -37,7 +37,7 @@ public class SignupServlet extends HttpServlet {
         if (success) {
             response.sendRedirect("pages/login_page.html"); // Update to your actual login page path
         } else {
-            out.println("❌ Signup failed. Email might already be registered.");
+            out.println("Signup failed. Email might already be registered.");
         }
     }
 }

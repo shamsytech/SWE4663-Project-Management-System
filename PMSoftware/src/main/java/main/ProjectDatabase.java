@@ -13,7 +13,7 @@ public class ProjectDatabase {
             InputStream input = getClass().getClassLoader().getResourceAsStream("db.properties");
 
             if (input == null) {
-                System.out.println("❌ db.properties not found in classpath!");
+                System.out.println("db.properties not found in classpath!");
                 return;
             }
 
@@ -23,13 +23,13 @@ public class ProjectDatabase {
             String user = props.getProperty("db.user");
             String password = props.getProperty("db.password");
 
-            // ✅ Explicitly load MySQL JDBC driver (fixes No Suitable Driver error)
+            //Explicitly load MySQL JDBC driver (fixes No Suitable Driver error)
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("✅ Connected to database!");
+            System.out.println("Connected to database!");
         } catch (Exception e) {
-            System.out.println("❌ Exception during DB init:");
+            System.out.println("Exception during DB init:");
             e.printStackTrace();
         }
     }
@@ -87,7 +87,7 @@ public class ProjectDatabase {
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                System.out.println("📁 Project: " + rs.getInt("ProjectID") + " - " + rs.getString("ProjectName") + " (Owner: " + rs.getString("OwnerName") + ")");
+                System.out.println("Project: " + rs.getInt("ProjectID") + " - " + rs.getString("ProjectName") + " (Owner: " + rs.getString("OwnerName") + ")");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -103,7 +103,7 @@ public class ProjectDatabase {
             ResultSet rs = stmt.executeQuery();
 
             double total = 0;
-            System.out.println("📝 Effort Log for Requirement ID: " + requirementId);
+            System.out.println("Effort Log for Requirement ID: " + requirementId);
             System.out.println("Date\t\tAnalysis\tDesign\tCoding\tTesting\tManagement\tTotal");
 
             while (rs.next()) {
@@ -201,7 +201,7 @@ public class ProjectDatabase {
             stmt.setString(1, "%" + keyword + "%");
             ResultSet rs = stmt.executeQuery();
 
-            System.out.println("🔍 Search Results for: " + keyword);
+            System.out.println("Search Results for: " + keyword);
             while (rs.next()) {
                 System.out.printf("ID: %d | Name: %s | Owner: %s\n",
                         rs.getInt("ProjectID"), rs.getString("ProjectName"), rs.getString("OwnerName"));
@@ -223,7 +223,7 @@ public class ProjectDatabase {
             System.out.println("✅ User created: " + email);
             return true;
         } catch (SQLException e) {
-            System.err.println("❌ Failed to create user: " + email);
+            System.err.println("Failed to create user: " + email);
             e.printStackTrace();
             return false;
         }
