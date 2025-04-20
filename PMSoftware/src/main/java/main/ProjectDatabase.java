@@ -1,7 +1,7 @@
 package main;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
-import java.io.FileInputStream;
 
 public class ProjectDatabase {
     private Connection conn;
@@ -10,18 +10,31 @@ public class ProjectDatabase {
     public ProjectDatabase() {
         try {
             Properties props = new Properties();
-            FileInputStream fis = new FileInputStream("db.properties");
-            props.load(fis);
+            InputStream input = getClass().getClassLoader().getResourceAsStream("db.properties");
+
+            if (input == null) {
+                System.out.println("❌ db.properties not found in classpath!");
+                return;
+            }
+
+            props.load(input);
 
             String url = props.getProperty("db.url");
             String user = props.getProperty("db.user");
             String password = props.getProperty("db.password");
 
+            // ✅ Explicitly load MySQL JDBC driver (fixes No Suitable Driver error)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
             conn = DriverManager.getConnection(url, user, password);
+            System.out.println("✅ Connected to database!");
         } catch (Exception e) {
+            System.out.println("❌ Exception during DB init:");
             e.printStackTrace();
         }
     }
+
+
 
     // Method: Add a new project
     public void addProject(String name, String owner) {
