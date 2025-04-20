@@ -1,0 +1,166 @@
+/* Reset + base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Jost', sans-serif;
+    background-color: #ebecf2;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .header-bar {
+    height: 104px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .header-bar h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1e1e1e;
+  }
+  
+  /* Footer */
+  .footer-bar {
+    height: 60px;
+    background-color: white;
+    flex-shrink: 0;
+  }
+  
+  /* Main content */
+  .main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* White card */
+  .content-box {
+    background-color: #fff;
+    padding: 40px 48px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Headline */
+  .headline {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  
+  .brand {
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  /* Description */
+  .description {
+    font-size: 16px;
+    margin-bottom: 32px;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  /* Buttons */
+  .button {
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: 1px solid #2c2c2c;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: rgba(63, 193, 78, 0.31);
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #3fc14e;
+    color: white;
+  }
+  
+  .button.secondary {
+    background-color: rgba(63, 193, 78, 0.31);
+  }
+
+  a.button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+  }
+
+  /* ===== SIGN UP PAGE STYLES ===== */
+
+.signup-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .signup-box h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  
+  /* Form layout */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  label {
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  /* Button */
+  .submit-button {
+    padding: 14px 0;
+    background-color: rgba(63, 193, 78, 0.31);
+    border: 1px solid #2c2c2c;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #3fc14e;
+    color: white;
+  }
+  
+  

@@ -1,3 +1,4 @@
+package main;
 import java.sql.*;
 import java.util.Properties;
 import java.io.FileInputStream;
@@ -197,6 +198,23 @@ public class ProjectDatabase {
         }
     }
 
+    // Method: Register a new user
+    public boolean createUser(String firstName, String lastName, String email, String passwordHash) {
+        String sql = "INSERT INTO users (FirstName, LastName, Email, PasswordHash) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, firstName);
+            stmt.setString(2, lastName);
+            stmt.setString(3, email);
+            stmt.setString(4, passwordHash);
+            stmt.executeUpdate();
+            System.out.println("✅ User created: " + email);
+            return true;
+        } catch (SQLException e) {
+            System.err.println("❌ Failed to create user: " + email);
+            e.printStackTrace();
+            return false;
+        }
+    }
     
     //Close connection (can also use try-with-resources in a wrapper)
     public void close() {
