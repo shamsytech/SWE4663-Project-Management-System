@@ -37,10 +37,35 @@
   }
   
   /* Main content */
-  .main-content {
-    padding-top: 60px; /* Match your header height */
-  }
-  
+    .main-content {
+      padding-top: 60px; /* for pages with fixed header like dashboard */
+    }
+
+body.no-sidebar .main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* override fixed height */
+}
+
+body.no-sidebar .footer-bar {
+  background-color: white;
+  height: 60px;
+}
+
+    body.no-sidebar .header-bar {
+      height: 60px;
+    }
+
+    body.no-sidebar {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+
+
   
   /* White card */
   .content-box {
