@@ -228,7 +228,21 @@ public class ProjectDatabase {
             return false;
         }
     }
-    
+
+    public String getPasswordHashByEmail(String email) {
+        String sql = "SELECT PasswordHash FROM users WHERE Email = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("PasswordHash");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     //Close connection (can also use try-with-resources in a wrapper)
     public void close() {
         try {
