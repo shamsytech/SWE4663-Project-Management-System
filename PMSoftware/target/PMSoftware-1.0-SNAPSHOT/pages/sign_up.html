@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body>
+<body class="no-sidebar">
 <header class="header-bar">
     <h1>Project Management Signup</h1>
 </header>
@@ -17,6 +17,18 @@
         <a href="landing_page.html" class="back-arrow">&#8592; Back</a>
 
         <h2>Sign Up</h2>
+        <!-- Error display -->
+        <div id="signup-error" style="color: red; text-align: center; margin-bottom: 10px;"></div>
+        <script>
+            const signupParams = new URLSearchParams(window.location.search);
+            const signupError = signupParams.get("error");
+
+            if (signupError === "missing") {
+              document.getElementById("signup-error").textContent = "All fields are required.";
+            } else if (signupError === "exists") {
+              document.getElementById("signup-error").textContent = "Email is already registered.";
+            }
+        </script>
         <form method="POST" action="../signup">
             <label for="first-name">First Name:</label>
             <input type="text" id="first-name" name="first-name" required />
