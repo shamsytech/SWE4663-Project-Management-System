@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <title>Project Management Signup</title>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css" />
-  </head>
-  <body>
-    <header class="header-bar">
-      <h1>Project Management Signup</h1>
-    </header>
+</head>
+<body>
+<header class="header-bar">
+    <h1>Project Management Signup</h1>
+</header>
 
-    <main class="main-content">
-      <div class="signup-box">
+<main class="main-content">
+    <div class="signup-box">
+        <!-- 🔙 Back Arrow -->
+        <a href="landing_page.html" class="back-arrow">&#8592; Back</a>
+
         <h2>Sign Up</h2>
-		<form method="POST" action="../signup">
-		  <label for="first-name">First Name:</label>
-		  <input type="text" id="first-name" name="first-name" required />
+        <form method="POST" action="../signup">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" required />
 
-		  <label for="last-name">Last Name:</label>
-		  <input type="text" id="last-name" name="last-name" required />
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" required />
 
-		  <label for="email">Email:</label>
-		  <input type="email" id="email" name="email" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
 
-		  <label for="password">Password:</label>
-		  <input type="password" id="password" name="password" required />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
 
-		  <button type="submit" class="submit-button">Sign Up</button>
-		</form>
-      </div>
-    </main>
+            <button type="submit" class="submit-button">Sign Up</button>
+        </form>
+    </div>
+</main>
 
-    <footer class="footer-bar"></footer>
-  </body>
+<footer class="footer-bar"></footer>
+</body>
 </html>

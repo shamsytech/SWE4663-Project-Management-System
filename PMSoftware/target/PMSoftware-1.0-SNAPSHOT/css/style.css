@@ -162,5 +162,34 @@
     background-color: #3fc14e;
     color: white;
   }
+
+  /*Sign in*/
+  .signup-box a {
+    color: #777; /* light-medium gray */
+    text-decoration: none;
+    font-size: 12px;
+  }
+  
+  .signup-box a:hover {
+    text-decoration: underline;
+    color: #555;
+  }
+
+  .back-arrow {
+    display: block;
+    text-align: left;
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-decoration: none;
+  }
+  
+  .back-arrow:hover {
+    text-decoration: underline;
+    color: #222;
+  }
+  
+  
+  
   
   

@@ -19,12 +19,9 @@ public class SignupServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
         if (firstName == null || lastName == null || email == null || password == null ||
                 firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            out.println("⚠ All fields are required.");
+            response.sendRedirect("pages/sign_up.html?error=missing");
             return;
         }
 
@@ -37,7 +34,7 @@ public class SignupServlet extends HttpServlet {
         if (success) {
             response.sendRedirect("pages/landing_page.html");
         } else {
-            out.println("Signup failed. Email might already be registered.");
+            response.sendRedirect("pages/sign_up.html?error=exists");
         }
     }
 }
