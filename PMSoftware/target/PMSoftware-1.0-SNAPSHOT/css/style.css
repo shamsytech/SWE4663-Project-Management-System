@@ -538,19 +538,29 @@ body.no-sidebar .footer-bar {
     gap: 8px;
   }
   
-  .project-card .risk-label {
+  .risk-label {
+    display: inline-block;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: bold;
     padding: 4px 8px;
     border-radius: 12px;
     color: white;
-    display: inline-block;
+    margin-bottom: 8px;
   }
   
-  .risk-label.red { background-color: #e74c3c; }
-  .risk-label.yellow { background-color: #f1c40f; color: #222; }
-  .risk-label.green { background-color: #2ecc71; }
+  .risk-label.high {
+    background-color: #e74c3c; /* red */
+  }
   
+  .risk-label.medium {
+    background-color: #f1c40f; /* yellow */
+    color: black;
+  }
+  
+  .risk-label.low {
+    background-color: #2ecc71; /* green */
+  }
+    
   .project-card h3 {
     margin: 0;
     font-size: 18px;
