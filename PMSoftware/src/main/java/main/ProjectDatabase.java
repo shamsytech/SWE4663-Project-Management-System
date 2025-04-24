@@ -169,7 +169,7 @@ public class ProjectDatabase {
             stmt.setInt(1, projectId);
             ResultSet rs = stmt.executeQuery();
 
-            System.out.println("📌 Requirements for Project ID: " + projectId);
+            System.out.println("Requirements for Project ID: " + projectId);
             while (rs.next()) {
                 System.out.printf("ID: %d | Type: %s | Description: %s\n",
                         rs.getInt("RequirementID"), rs.getString("Type"), rs.getString("Description"));
@@ -220,7 +220,7 @@ public class ProjectDatabase {
             stmt.setString(3, email);
             stmt.setString(4, passwordHash);
             stmt.executeUpdate();
-            System.out.println("✅ User created: " + email);
+            System.out.println("User created: " + email);
             return true;
         } catch (SQLException e) {
             System.err.println("Failed to create user: " + email);
@@ -250,5 +250,9 @@ public class ProjectDatabase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Connection getConnection() {
+        return conn;
     }
 }
