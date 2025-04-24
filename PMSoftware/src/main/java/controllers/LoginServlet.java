@@ -18,18 +18,42 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         ProjectDatabase db = new ProjectDatabase();
-        String storedHash = db.getPasswordHashByEmail(email);
-        db.close();
+        Connection conn = db.getConnection();
 
-        if (storedHash != null && BCrypt.checkpw(password, storedHash)) {
-            //Login success
-            HttpSession session = request.getSession();
-            session.setAttribute("userEmail", email);
-            response.sendRedirect("dashboard.html"); // Replace with your actual landing page
-        } else {
-            //Invalid login
+        try {
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE Email = ?");
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String storedHash = rs.getString("PasswordHash");
+
+                if (BCrypt.checkpw(password, storedHash)) {
+                    // Create session and store user info
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", true);  // used to check login
+                    session.setAttribute("userID", rs.getInt("UserID"));
+                    session.setAttribute("userEmail", rs.getString("Email"));
+                    session.setAttribute("userName", rs.getString("FirstName") + " " + rs.getString("LastName"));
+
+                    String profilePic = rs.getString("ProfilePic");
+                    if (profilePic == null || profilePic.isEmpty()) {
+                        profilePic = "default.jpg";  // fallback
+                    }
+                    session.setAttribute("userAvatar", profilePic);
+
+                    response.sendRedirect("pages/dashboard.jsp");
+                    return;
+                }
+            }
+
+            // If login failed
             response.sendRedirect("pages/login.html?error=invalid");
 
+        } catch (SQLException e) {
+            throw new ServletException("DB error during login", e);
+        } finally {
+            db.close();
         }
     }
 }

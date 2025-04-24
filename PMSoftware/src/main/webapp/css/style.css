@@ -31,10 +31,13 @@
   
   /* Footer */
   .footer-bar {
-    height: 60px;
     background-color: white;
-    flex-shrink: 0;
+    height: 60px;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
   }
+  
   
   /* Main content */
     .main-content {
@@ -163,10 +166,10 @@ body.no-sidebar .footer-bar {
   
   input {
     padding: 10px;
-    margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
+    margin-bottom: 16px;
   }
   
   /* Button */
@@ -309,6 +312,14 @@ body.no-sidebar .footer-bar {
     width: 24px;
     height: 24px;
   }
+
+  .icon-inline {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  
   
   .profile-wrapper {
     display: flex;
@@ -442,11 +453,117 @@ body.no-sidebar .footer-bar {
     font-weight: 500;
     margin-bottom: 5px;
   }
+
+  /* Dashboard */
+  .dashboard-main {
+    padding: 32px;
+    background-color: #ebecf2;
+  }
+  
+  .dashboard-controls {
+    display: flex;
+    align-items: center;  /* This ensures vertical centering */
+    gap: 20px;
+    padding: 16px 24px;
+    flex-wrap: wrap;  /* Optional, helps wrap on small screens */
+  }
   
   
+  .search-input {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    flex: 1;
+    min-width: 200px;
+    vertical-align: middle;
+    line-height: normal;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
   
+  .status-filters {
+    display: flex;
+    gap: 12px;
+  }
   
+  .filter-btn {
+    padding: 6px 12px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
   
+  .filter-btn.active {
+    background-color: #333;
+    color: white;
+  }
   
+  .risk-indicators {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #444;
+  }
   
+  .risk-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .risk-dot.red { background-color: #e74c3c; }
+  .risk-dot.yellow { background-color: #f1c40f; }
+  .risk-dot.green { background-color: #2ecc71; }
+  
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  
+  .project-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .project-card .risk-label {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    color: white;
+    display: inline-block;
+  }
+  
+  .risk-label.red { background-color: #e74c3c; }
+  .risk-label.yellow { background-color: #f1c40f; color: #222; }
+  .risk-label.green { background-color: #2ecc71; }
+  
+  .project-card h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .project-card .description {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .project-card .hours,
+  .project-card .due {
+    font-size: 13px;
+    color: #777;
+  }
   

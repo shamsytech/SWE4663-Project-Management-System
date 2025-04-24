@@ -1,5 +1,6 @@
 controllers\SignupServlet.class
 main\ProjectDatabase.class
+controllers\FetchProjectsServlet.class
 main\DBUtil.class
 main\Main.class
 controllers\LoginServlet.class
