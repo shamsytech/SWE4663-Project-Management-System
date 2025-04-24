@@ -34,18 +34,25 @@ public class FetchProjectsServlet extends HttpServlet {
                 String description = rs.getString("Description");
                 int hours = rs.getInt("LoggedHours");
                 String due = rs.getString("DueDate");
-                String risk = rs.getString("RiskLevel").toLowerCase();
-                String status = rs.getString("Status");
 
-                out.println("<div class='project-card " + risk + "'>");
-                out.println("<div class='card-header'><span class='risk-label " + risk + "'>" + capitalize(risk) + " Risk</span></div>");
+                // Safely handle nulls and normalize values
+                String risk = rs.getString("RiskLevel");
+                risk = (risk != null && !risk.isEmpty()) ? risk.toLowerCase() : "low";
+
+                String status = rs.getString("Status");
+                status = (status != null) ? status.toLowerCase() : "to do";
+
+                // Capitalize risk for display
+                String displayRisk = risk.substring(0, 1).toUpperCase() + risk.substring(1);
+
+                out.println("<div class='project-card " + risk + "' data-status='" + status + "' data-risk='" + risk + "'>");
+                out.println("<div class='card-header'><span class='risk-label " + risk + "'>" + displayRisk + " Risk</span></div>");
                 out.println("<h3>" + title + "</h3>");
                 out.println("<p class='description'>" + description + "</p>");
                 out.println("<p class='hours'><img src='../icons/clock.svg' class='icon-inline' alt='Clock' /> " + hours + " hrs</p>");
                 out.println("<p class='due'><img src='../icons/calendar.svg' class='icon-inline' alt='Calendar' /> Due: " + due + "</p>");
                 out.println("</div>");
             }
-
         } catch (SQLException e) {
             out.println("<p>Error loading projects.</p>");
             e.printStackTrace(out);
