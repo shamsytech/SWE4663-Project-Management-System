@@ -30,6 +30,7 @@ public class FetchProjectsServlet extends HttpServlet {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
+                int projectId = rs.getInt("ProjectID");
                 String title = rs.getString("ProjectName");
                 String description = rs.getString("Description");
                 int hours = rs.getInt("LoggedHours");
@@ -45,13 +46,23 @@ public class FetchProjectsServlet extends HttpServlet {
                 // Capitalize risk for display
                 String displayRisk = risk.substring(0, 1).toUpperCase() + risk.substring(1);
 
-                out.println("<div class='project-card " + risk + "' data-status='" + status + "' data-risk='" + risk + "'>");
-                out.println("<div class='card-header'><span class='risk-label " + risk + "'>" + displayRisk + " Risk</span></div>");
-                out.println("<h3>" + title + "</h3>");
-                out.println("<p class='description'>" + description + "</p>");
-                out.println("<p class='hours'><img src='../icons/clock.svg' class='icon-inline' alt='Clock' /> " + hours + " hrs</p>");
-                out.println("<p class='due'><img src='../icons/calendar.svg' class='icon-inline' alt='Calendar' /> Due: " + due + "</p>");
+                out.println("<div class='project-card " + risk + "' data-status='" + status + "' data-risk='" + risk + "' data-id='" + projectId + "'>");
+
+                out.println("  <div class='card-header'>");
+                out.println("    <span class='risk-label " + risk + "'>" + displayRisk + " Risk</span>");
+                out.println("    <div class='card-actions'>");
+                out.println("      <button class='action-btn invite-btn'><img src='../icons/invite.svg' alt='Invite' /> Invite</button>");
+                out.println("      <button class='edit-btn' onclick='openEditModal(this, " + projectId + ")'><img src=\"../icons/edit.svg\" alt=\"Edit\" /> Edit</button>");
+                out.println("    </div>");
+                out.println("  </div>");
+
+                out.println("  <h3>" + title + "</h3>");
+                out.println("  <p class='description'>" + description + "</p>");
+                out.println("  <p class='hours'><img src='../icons/clock.svg' class='icon-inline' alt='Clock' /> " + hours + " hrs</p>");
+                out.println("  <p class='due'><img src='../icons/calendar.svg' class='icon-inline' alt='Calendar' /> Due: " + due + "</p>");
+
                 out.println("</div>");
+
             }
         } catch (SQLException e) {
             out.println("<p>Error loading projects.</p>");
