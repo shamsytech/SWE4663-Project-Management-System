@@ -189,8 +189,9 @@
 
   function openEditModal(button) {
     const card = button.closest('.project-card');
+    const editProjectModal = document.getElementById("editProjectModal");
     const id = card?.getAttribute('data-id');
-    modal.style.display = "flex"; // Use 'flex' for vertical centering
+    editProjectModal.style.display = "flex"; // Use 'flex' for vertical centering
     if (!id) return;
 
     fetch('../get-project?id=' + id)
@@ -204,7 +205,7 @@
         form.elements["RiskLevel"].value = data.RiskLevel;
         form.elements["DueDate"].value = data.DueDate;
 
-        document.getElementById("editProjectModal").style.display = "block";
+        document.getElementById("editProjectModal").style.display = "flex";
       });
   }
 
@@ -214,6 +215,5 @@
       modal.style.display = "none";
     }
   }
-
 </script>
 
