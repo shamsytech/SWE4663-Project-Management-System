@@ -56,7 +56,7 @@ public class FetchProjectsServlet extends HttpServlet {
                 out.println("    </div>");
                 out.println("  </div>");
 
-                out.println("  <h3>" + title + "</h3>");
+                out.println("<h3 class='project-title'><a href='project_detail.jsp?id=" + projectId + "'>" + title + "</a></h3>");
                 out.println("  <p class='description'>" + description + "</p>");
                 out.println("  <p class='hours'><img src='../icons/clock.svg' class='icon-inline' alt='Clock' /> " + hours + " hrs</p>");
                 out.println("  <p class='due'><img src='../icons/calendar.svg' class='icon-inline' alt='Calendar' /> Due: " + due + "</p>");
