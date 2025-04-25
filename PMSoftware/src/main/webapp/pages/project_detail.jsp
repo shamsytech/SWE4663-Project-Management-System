@@ -1,4 +1,5 @@
 <%@ page import="java.sql.*, main.ProjectDatabase" %>
+<%@ page import="java.util.List, java.util.Map, java.util.HashMap, java.util.ArrayList" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
@@ -70,8 +71,10 @@
 <body data-title="Project Details"
       data-avatar="<%= session.getAttribute("userAvatar") %>"
       data-user-name="<%= session.getAttribute("userName") %>"
-      data-user-email="<%= session.getAttribute("userEmail") %>">
+      data-user-email="<%= session.getAttribute("userEmail") %>"
+      data-project-id="<%= projectId %>">
 
+<% request.setAttribute("pageTitle", "Project Details"); %>
 <jsp:include page="../components/header.jsp" />
 
 <main class="dashboard-main">
@@ -103,37 +106,132 @@
 
   <!-- Requirements Grid -->
   <div class="requirement-grid">
+        <% for (Map<String, Object> req : requirements) {
+             String type = (String) req.get("Type");
+             boolean isFunctional = "Functional".equalsIgnoreCase(type); // null-safe
+             boolean isMet = req.get("isMet") != null && (Boolean) req.get("isMet");
+        %>
+    <div class="requirement-card <%= isFunctional ? "functional" : "non-functional" %>" data-id="<%= req.get("RequirementID") %>">
+        <style="border: 1px solid #ddd; padding: 10px; margin: 10px; background: #fff;">
+        <div class="card-header">
+            <span class="requirement-type"><%= type %></span>
+            <span class="requirement-hours">
+                <img src="../icons/clock.svg" class="icon-inline" alt="Clock" />
+                <%= ((Double) req.get("Hours")) %> hrs
+            </span>
+        </div>
 
-    <!-- Functional Requirement Card -->
-    <div class="requirement-card functional">
-      <div class="card-header">
-        <span class="requirement-type">Functional</span>
-        <span class="requirement-hours">🕒 12 hrs</span>
-      </div>
-      <h3 class="requirement-title">#1 User Login</h3>
-      <p class="requirement-desc">Enable users to securely log in using email and password.</p>
-      <div class="requirement-footer">
-        <button class="log-btn">⏳ Log</button>
-        <button class="edit-btn">✏️ Edit</button>
-        <span class="requirement-check">✅</span>
-      </div>
-    </div>
+        <h3 class="requirement-title"><%= req.get("Title") %></h3>
+        <p class="requirement-desc"><%= req.get("Description") %></p>
 
-    <!-- Non-Functional Requirement Card -->
-    <div class="requirement-card non-functional">
-      <div class="card-header">
-        <span class="requirement-type">Non-Functional</span>
-        <span class="requirement-hours">🕒 5 hrs</span>
-      </div>
-      <h3 class="requirement-title">#2 Performance</h3>
-      <p class="requirement-desc">System should respond to requests within 2 seconds.</p>
-      <div class="requirement-footer">
-        <button class="log-btn">⏳ Log</button>
-        <button class="edit-btn">✏️ Edit</button>
-      </div>
+        <div class="requirement-footer">
+            <button class="log-btn"
+              onclick="openLogModal(<%= req.get("RequirementID") %>, '<%= req.get("Title").toString().replace("'", "\\'") %>')">
+              <img src="../icons/hourglass.svg" class="icon-inline" alt="Log" /> Log
+            </button>
+            <button class="edit-btn" onclick="openEditRequirementModal(this)">
+              <img src="../icons/edit.svg" class="icon-inline" alt="Edit" /> Edit
+            </button>
+            <% if (isMet) { %>
+                <span class="requirement-check">
+                    <img src="../icons/check.svg" class="icon-inline" alt="Met" />
+                </span>
+            <% } %>
+        </div>
     </div>
+    <% } %>
   </div>
 </main>
+
+<!-- Edit Requirement Modal -->
+<div id="editRequirementModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeEditModal()">&times;</span>
+    <h2>Edit Requirement</h2>
+    <form id="editRequirementForm" method="post" action="../edit-requirement">
+      <input type="hidden" name="RequirementID" id="editRequirementID" />
+      <input type="hidden" name="ProjectID" id="editProjectID" />
+
+      <label for="editRequirementTitle">Title</label>
+      <input type="text" name="Title" id="editRequirementTitle" required />
+
+      <label for="editRequirementDesc">Description</label>
+      <textarea name="Description" id="editRequirementDesc" required></textarea>
+
+      <label for="editRequirementType">Type</label>
+      <select name="Type" id="editRequirementType">
+        <option value="Functional">Functional</option>
+        <option value="Non-Functional">Non-Functional</option>
+      </select>
+
+      <label>
+        <input type="Hidden" name="IsMet" id="editRequirementIsMet" />
+      </label>
+
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- Log Effort Modal -->
+<div id="logModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeLogModal()">&times;</span>
+    <h2>Log Effort for <span id="logRequirementName">Requirement</span></h2>
+
+    <form action="../log-effort" method="post">
+        <input type="hidden" name="RequirementID" id="logRequirementID" />
+        <input type="hidden" name="projectID" value="<%= projectId %>" />
+
+         <label for="LoggedDate">Date of Work</label>
+         <input type="date" name="LoggedDate" id="LoggedDate" required />
+
+        <label for="AnalysisHours">Requirements Analysis (hrs)</label>
+        <input type="number" step="0.1" min="0" name="AnalysisHours" />
+
+        <label for="DesignHours">Designing (hrs)</label>
+        <input type="number" step="0.1" min="0" name="DesignHours" />
+
+        <label for="CodingHours">Coding (hrs)</label>
+        <input type="number" step="0.1" min="0" name="CodingHours" />
+
+        <label for="TestingHours">Testing (hrs)</label>
+        <input type="number" step="0.1" min="0" name="TestingHours" />
+
+        <label for="ManagementHours">Project Management (hrs)</label>
+        <input type="number" step="0.1" min="0" name="ManagementHours" />
+
+        <button type="submit" class="submit-btn">Submit Log</button>
+
+    </form>
+  </div>
+</div>
+
+<!-- Add Requirement Modal -->
+<div id="requirementModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeRequirementModal()">&times;</span>
+    <h2>Add New Requirement</h2>
+    <form id="addRequirementForm" action="../add-requirement" method="post">
+      <input type="hidden" name="ProjectID" value="<%= projectId %>" />
+
+      <label for="newTitle">Title</label>
+      <input type="text" name="Title" id="newTitle" required />
+
+      <label for="newDescription">Description</label>
+      <textarea name="Description" id="newDescription" required></textarea>
+
+      <label for="newType">Type</label>
+      <select name="Type" id="newType">
+        <option value="Functional">Functional</option>
+        <option value="Non-Functional">Non-Functional</option>
+      </select>
+
+      <button type="submit">Add Requirement</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>
 
@@ -173,8 +271,63 @@
   });
 
   function openRequirementModal() {
-    // Show your modal for adding requirement
-    document.getElementById("requirementModal").style.display = "block";
+    document.getElementById("requirementModal").style.display = "flex";
+  }
+
+  function closeRequirementModal() {
+    document.getElementById("requirementModal").style.display = "none";
+  }
+
+  function openLogModal(reqId, reqTitle) {
+    document.getElementById("logRequirementID").value = reqId;
+    document.getElementById("logRequirementName").innerText = reqTitle;
+    document.getElementById("logModal").style.display = "flex";
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+  }
+
+    function closeLogModal() {
+      document.getElementById("logModal").style.display = "none";
+    }
+
+  function closeEditModal() {
+    document.getElementById("editRequirementModal").style.display = "none";
+  }
+
+  function openEditRequirementModal(button) {
+    const card = button.closest('.requirement-card');
+    if (!card) return;
+
+    const id = card.dataset.id || "";
+    const titleElem = card.querySelector(".requirement-title");
+    const descElem = card.querySelector(".requirement-desc");
+
+    const title = titleElem ? titleElem.textContent.split(" ").slice(1).join(" ") : "";
+    const desc = descElem ? descElem.textContent : "";
+    const type = card.classList.contains("functional") ? "Functional" : "Non-Functional";
+    const isMet = card.querySelector(".requirement-check") !== null;
+    const projectId = document.body.dataset.projectId;
+
+    document.getElementById("editRequirementID").value = id;
+    console.log("Setting RequirementID:", id);
+    document.getElementById("editProjectID").value = projectId;
+    document.getElementById("editRequirementTitle").value = title.trim();
+    document.getElementById("editRequirementDesc").value = desc.trim();
+    document.getElementById("editRequirementType").value = type;
+    document.getElementById("editRequirementIsMet").checked = isMet;
+
+    document.getElementById("editRequirementModal").style.display = "flex";
+  }
+
+
+
+  window.onclick = function(event) {
+    ["logModal", "editRequirementModal"].forEach(id => {
+      const modal = document.getElementById(id);
+      if (event.target === modal) modal.style.display = "none";
+    });
   }
 </script>
 

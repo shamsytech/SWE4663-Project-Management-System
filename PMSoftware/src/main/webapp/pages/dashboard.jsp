@@ -19,6 +19,7 @@
       data-user-name="${userName}"
       data-user-email="${userEmail}">
 
+<% request.setAttribute("pageTitle", "Dashboard"); %>
 <jsp:include page="../components/header.jsp" />
 
 <main class="dashboard-main">

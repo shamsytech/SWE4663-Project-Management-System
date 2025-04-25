@@ -17,11 +17,19 @@
 
   <div class="sidebar-menu">
     <p class="menu-label">Menu</p>
-    <a href="#"><img src="../icons/dashboard.svg" alt="Dashboard Icon" /> Dashboard</a>
-    <a href="#"><img src="../icons/dashboard.svg" alt="Projects Icon" /> Projects</a>
-    <a href="#"><img src="../icons/dashboard.svg" alt="Collaboration Icon" /> Collaboration</a>
-    <a href="#"><img src="../icons/dashboard.svg" alt="Reports Icon" /> Reports</a>
+    <a href="<%= request.getContextPath() %>/pages/dashboard.jsp">
+      <img src="../icons/dashboard.svg" alt="Dashboard Icon" /> Dashboard
+    </a>
+    <a href="<%= request.getContextPath() %>/pages/collaboration.jsp">
+      <img src="../icons/dashboard.svg" alt="Collaboration Icon" /> Collaboration
+    </a>
+    <a href="<%= request.getContextPath() %>/pages/reports.jsp">
+      <img src="../icons/dashboard.svg" alt="Reports Icon" /> Reports
+    </a>
     <p class="menu-label">Settings</p>
+    <a href="<%= request.getContextPath() %>/logout">
+      <img src="../icons/dashboard.svg" alt="Logout Icon" /> Logout
+    </a>
   </div>
 </div>
 
@@ -33,7 +41,7 @@
     </button>
   </div>
 
-  <h1 class="page-title" id="dynamic-page-title">Projects</h1>
+  <h1 class="page-title" id="dynamic-page-title"><%= request.getAttribute("pageTitle") %></h1>
 
   <div class="right">
     <button class="icon-btn">

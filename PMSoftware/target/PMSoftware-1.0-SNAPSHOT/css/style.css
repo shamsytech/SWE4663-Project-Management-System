@@ -317,8 +317,9 @@ body.no-sidebar .footer-bar {
     width: 14px;
     height: 14px;
     vertical-align: middle;
-    margin-right: 6px;
-  }
+    padding-bottom: 3px;
+    padding-left: 4px;
+}
   
   
   .profile-wrapper {
@@ -445,6 +446,17 @@ body.no-sidebar .footer-bar {
     font-size: 13px;
     color: #777;
   }
+
+  .sidebar-menu a:hover {
+    background-color: #f2f2f2;
+    color: var(--primary-color);
+    border-radius: 4px;
+  }
+  .sidebar-menu a.active {
+    font-weight: bold;
+    background-color: #e6f0ff;
+  }
+  
   
 
   .menu-label {
@@ -712,6 +724,20 @@ body.no-sidebar .footer-bar {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 30px;
+  }
+  
+  .modal-content label[for="editRequirementIsMet"] {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-weight: normal;
+  }
+
+  .modal-content input[type="checkbox"] + label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
   
   
