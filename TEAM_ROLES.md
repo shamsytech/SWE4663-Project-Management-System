@@ -8,7 +8,7 @@ This document outlines the roles and responsibilities of each team member for th
 
 ### Project Managers
 - **Project Lead**: Shams Hasan
-- **Co-Project Lead**:
+- **Co-Project Lead**: Ashley Sutton
 - **Responsibilities**:
   - Oversee project timeline and deliverables.
   - Coordinate team communication and meetings.
@@ -16,7 +16,7 @@ This document outlines the roles and responsibilities of each team member for th
 
 ### Developers
 - **Main Software Developer**: Harry Nguyen
-- **Co-Software Developer(s)**:
+- **Co-Software Developer(s)**: N/A
 - **Responsibilities**:
   - Implement core system features (e.g., General Information, Requirements, Effort Tracking).
   - Write clean, maintainable code.
@@ -32,37 +32,14 @@ This document outlines the roles and responsibilities of each team member for th
 
 ### Testers
 - **Main Tester**: Ashlynn Sutton
-- **Co-Tester(s)**:
+- **Co-Tester(s)**: N/A
 - **Responsibilities**:
   - Test the system for bugs and errors.
   - Ensure all features meet functional and non-functional requirements.
   - Document and report issues to developers.
 
 ### Risk Analyzer(s)
-- **[Names go here]**
+- Shams Hasan, Julissa Urbiola, Ashley Sutton, Ameer Salamah
 - **Responsibilities**:
   - Write and maintain project documentation (e.g., reports, user manuals).
   - Ensure all documentation is clear, concise, and up-to-date.
-
----
-
-## Contribution Tracking
-
-| Name           | Role                  | Contribution Status | Notes                          |
-|----------------|-----------------------|---------------------|--------------------------------|
-| [Name]         | Project Manager       | [A/B/C]             | [Optional explanation]         |
-| [Name]         | Developer             | [A/B/C]             | [Optional explanation]         |
-| [Name]         | Designer              | [A/B/C]             | [Optional explanation]         |
-| [Name]         | Tester                | [A/B/C]             | [Optional explanation]         |
-| [Name]         | Risk Analyzer         | [A/B/C]             | [Optional explanation]         |
-
-**Contribution Status Key**:
-- **[A]**: Did their share.
-- **[B]**: Did less than their share.
-- **[C]**: Did nothing.
-
----
-
-## Notes
-- This file will be updated regularly to reflect changes in roles or contributions.
-- Team members are encouraged to review this document and suggest updates via pull requests.
