@@ -64,6 +64,8 @@ A comprehensive Project Management System designed to help teams:
 
 [Comprehensive Plan](https://github.com/shams-hasan/SWE4663-ProjectManagementSystem/tree/f31ab846c9ce5dc77d90b4a8b7ca53a67be90bdd/Planning-Docs/Comprehensive-Plan)
 
+[Final Plan](https://github.com/shams-hasan/SWE4663-ProjectManagementSystem/blob/696b3fae199f541e36b009f8d844956f2138d321/Planning-Docs/Project%20Management%20System%20-%20Final%20Deliverable.pdf)
+
 ## Prototype Overview
 
 
