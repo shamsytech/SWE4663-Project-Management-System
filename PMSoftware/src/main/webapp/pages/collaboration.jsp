@@ -43,6 +43,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Collaboration Projects</title>
   <link rel="stylesheet" href="../css/style.css" />
 </head>
@@ -83,11 +84,16 @@
         String displayRisk = risk.substring(0, 1).toUpperCase() + risk.substring(1);
         String status = ((String) proj.get("status")).toLowerCase();
     %>
-    <a href="project_detail.jsp?id=<%= proj.get("id") %>" class="project-card-link">
-      <div class="project-card <%= risk %>" data-status="<%= status %>" data-risk="<%= risk %>">
-        <div class="card-header">
-          <span class="risk-label <%= risk %>"><%= displayRisk %> Risk</span>
+    <div class="project-card <%= risk %>" data-id="<%= proj.get("id") %>" data-status="<%= status %>" data-risk="<%= risk %>">
+      <div class="card-header">
+        <span class="risk-label <%= risk %>"><%= displayRisk %> Risk</span>
+        <div class="card-actions">
+          <button class="view-btn" onclick="openTeamModal(this)">
+            <img src="../icons/eye.svg" class="icon-inline" alt="View" /> View
+          </button>
         </div>
+      </div>
+      <a href="project_detail.jsp?id=<%= proj.get("id") %>" class="project-card-link">
         <h3><%= proj.get("name") %></h3>
         <p class="description"><%= proj.get("description") %></p>
         <p class="hours">
@@ -98,15 +104,118 @@
           <img src="../icons/calendar.svg" class="icon-inline" alt="Calendar" />
           Due: <%= proj.get("due") %>
         </p>
-      </div>
-    </a>
+      </a>
+    </div>
     <% } %>
   </div>
 </main>
 </body>
+
+<div id="teamModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Team Members</h2>
+      <button class="add-member-btn" onclick="openAddMemberModal()">Add Member</button>
+      <span class="close" onclick="closeTeamModal()">&times;</span>
+    </div>
+    <div id="teamList">
+      <!-- Team members will be loaded here dynamically -->
+    </div>
+  </div>
+</div>
+
+<div id="addMemberModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Add Member</h2>
+      <span class="close" onclick="closeAddMemberModal()">&times;</span>
+    </div>
+    <form id="addMemberForm" method="post" action="../add-team-member">
+      <input type="hidden" name="ProjectID" id="addProjectID" />
+      <label for="UserID">Select User:</label>
+      <select name="UserID" id="userDropdown" required>
+        <!-- Options will be populated dynamically -->
+      </select>
+
+      <label for="Role">Role:</label>
+      <select name="Role" required>
+        <option value="manager">Manager</option>
+        <option value="editor">Editor</option>
+      </select>
+
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</div>
+
 </html>
 
 <script>
+function openTeamModal(button) {
+  const card = button.closest('.project-card');
+  const projectId = card.dataset.id;
+
+  console.log("Opening modal for project ID:", projectId);
+
+  // Show the modal
+  document.getElementById("teamModal").style.display = "flex";
+
+  // Fetch team members from server
+  fetch(`../fetch-team-members?projectID=${projectId}`)
+    .then(response => {
+      console.log("Fetch response status:", response.status);
+      return response.json();
+    })
+    .then(data => {
+      console.log("Fetched team data:", data);
+
+      const teamList = document.getElementById("teamList");
+      teamList.innerHTML = ""; // Clear previous entries
+
+      data.forEach(member => {
+        const item = document.createElement("div");
+        item.className = "team-member";
+        item.innerHTML = `<p><strong>${member.name}</strong> - ${member.role}</p>`;
+        teamList.appendChild(item);
+      });
+    })
+    .catch(error => {
+      console.error("Error loading team members:", error);
+    });
+}
+
+
+
+
+  function closeTeamModal() {
+    document.getElementById("teamModal").style.display = "none";
+  }
+
+function openAddMemberModal(projectId) {
+  document.getElementById("addProjectID").value = projectId;
+  document.getElementById("addMemberModal").style.display = "flex";
+
+  // Fetch users
+  fetch('../fetch-users') // You’ll need to create this servlet
+    .then(response => response.json())
+    .then(users => {
+      const dropdown = document.getElementById("userDropdown");
+      dropdown.innerHTML = "";
+      users.forEach(user => {
+        const option = document.createElement("option");
+        option.value = user.id;
+        option.text = user.name;
+        dropdown.appendChild(option);
+      });
+    })
+    .catch(err => console.error("Error loading users:", err));
+}
+
+function closeAddMemberModal() {
+  document.getElementById("addMemberModal").style.display = "none";
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.querySelector(".search-input");
     const filterButtons = document.querySelectorAll(".filter-btn");

@@ -1,5 +1,7 @@
+controllers\AddTeamMemberServlet.class
 main\ProjectDatabase.class
 controllers\EditRequirementServlet.class
+controllers\FetchUsersServlet.class
 controllers\ProjectDetailServlet.class
 main\DBUtil.class
 controllers\GetProjectServlet.class
@@ -9,6 +11,7 @@ controllers\AddRequirementServlet.class
 controllers\SignupServlet.class
 controllers\UpdateProjectServlet.class
 controllers\FetchProjectsServlet.class
+controllers\FetchTeamMembersServlet.class
 controllers\LogEffortServlet.class
 controllers\AddProjectServlet.class
 controllers\LoginServlet.class
