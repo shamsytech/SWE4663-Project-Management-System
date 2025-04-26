@@ -66,8 +66,8 @@ A comprehensive Project Management System designed to help teams:
 
 [Final Plan](https://github.com/shams-hasan/SWE4663-ProjectManagementSystem/blob/696b3fae199f541e36b009f8d844956f2138d321/Planning-Docs/Project%20Management%20System%20-%20Final%20Deliverable.pdf)
 
-## Prototype Overview
-
+## Figma Overview
+[Design](https://www.figma.com/design/jRYTNzo9M1GnBkCyooxyLN/SPM-Spring-25?node-id=0-1&t=h6IwyEXEm1LJBId4-1)
 
 ## System Requirements
  * Frontend: HTML, CSS, JavaScript.
