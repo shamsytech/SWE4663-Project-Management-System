@@ -39,7 +39,8 @@ This document outlines the roles and responsibilities of each team member for th
   - Document and report issues to developers.
 
 ### Risk Analyzer(s)
-- Shams Hasan, Julissa Urbiola, Ashley Sutton, Ameer Salamah
+- Shams Hasan, Harry Nguyen,
+- Julissa Urbiola, Ashley Sutton, Ameer Salamah
 - **Responsibilities**:
   - Write and maintain project documentation (e.g., reports, user manuals).
   - Ensure all documentation is clear, concise, and up-to-date.
